@@ -17,6 +17,18 @@ module.exports = function(environment) {
       }
     },
 
+    firebase: {
+      apiKey: process.env.FIREBASS_API_KEY,
+      authDomain: "firebass-music.firebaseapp.com",
+      databaseURL: "https://firebass-music.firebaseio.com",
+      projectId: "firebass-music",
+      storageBucket: "firebass-music.appspot.com"
+    },
+
+    torii: {
+      sessionServiceName: 'session'
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -26,7 +38,7 @@ module.exports = function(environment) {
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
