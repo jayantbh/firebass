@@ -2,6 +2,9 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
+  videoUrlOrId: '',
+  videoId: '',
+
   store: service(),
   session: service(),
 
@@ -13,6 +16,7 @@ export default Component.extend({
     // });
     // newPost.save();
   },
+
   actions: {
     signIn: function(provider) {
       this.get('session').open('firebase', { provider: provider }).then(function(data) {
@@ -21,6 +25,14 @@ export default Component.extend({
     },
     signOut: function() {
       this.get('session').close();
+    },
+    updateVideoId(event) {
+      event.preventDefault();
+
+      let videoUrlOrId = this.get('videoUrlOrId');
+      debugger;
+      let [, videoId] = videoUrlOrId.match(/(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/i);
+      this.set('videoId', videoId);
     }
   }
 });

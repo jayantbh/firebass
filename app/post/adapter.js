@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default ApplicationAdapter.extend({
   session: service(),
-  pathForType(type) {
+  pathForType() {
     return this.get('session.currentUser.uid');
   }
 });

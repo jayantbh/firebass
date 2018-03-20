@@ -1,5 +1,10 @@
 <p>Dummy todo experiment for firebase testing</p>
-{{fb-youtube}}
+{{fb-youtube video=videoId}}
+
+<form onsubmit={{action "updateVideoId"}}>
+  {{input input=(action (mut videoUrlOrId) value="target.value") placeholder="Add youtube link"}}
+  <button>Set video</button>
+</form>
 {{#if session.isAuthenticated}}
   <button>You're signed in!</button>
 {{else}}
