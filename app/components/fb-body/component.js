@@ -30,7 +30,6 @@ export default Component.extend({
       event.preventDefault();
 
       let videoUrlOrId = this.get('videoUrlOrId');
-      debugger;
       let [, videoId] = videoUrlOrId.match(/(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/i);
       this.set('videoId', videoId);
     }
