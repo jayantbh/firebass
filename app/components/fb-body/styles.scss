@@ -1,0 +1,35 @@
+@import '../styles/colors';
+
+.body-component {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+}
+
+.sidebar {
+  min-width: 240px;
+  flex-grow: 1;
+  background-color: $shade-2;
+}
+
+.content {
+  flex-grow: 4;
+  flex-shrink: 1;
+  background-color: $shade-3;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-list {
+  flex-grow: 1;
+  background-color: $shade-4;
+}
+
+.footer {
+  background-color: lighten($shade-4, 5%);
+}

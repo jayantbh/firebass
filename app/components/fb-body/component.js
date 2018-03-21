@@ -1,12 +1,12 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember/service';
 
 export default Component.extend({
-  videoUrlOrId: '',
+  tagName: '',
+
+  videoUrlOrId: 'https://www.youtube.com/watch?v=oWCrc3MwXPI',
   videoId: '',
 
-  store: service(),
-  session: service(),
+  // store: service(),
 
   init() {
     this._super(...arguments);
@@ -18,14 +18,6 @@ export default Component.extend({
   },
 
   actions: {
-    signIn: function(provider) {
-      this.get('session').open('firebase', { provider: provider }).then(function(data) {
-        console.log(data.currentUser);
-      });
-    },
-    signOut: function() {
-      this.get('session').close();
-    },
     updateVideoId(event) {
       event.preventDefault();
 

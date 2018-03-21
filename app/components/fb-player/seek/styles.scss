@@ -1,0 +1,105 @@
+@import '../styles/colors';
+
+$track-background: $shade-2;
+$track-border: none;
+$track-shadow: none;
+$track-width: 100%;
+
+$thumb-background: $shade-1;
+$thumb-border: none;
+$thumb-shadow: none;
+
+.seek-bar-wrapper {
+  width: 100%;
+}
+
+input[type=range].seek-bar {
+  -webkit-appearance: none;
+  width: $track-width;
+  margin: 1.7px 0;
+}
+input[type=range].seek-bar:focus {
+  outline: none;
+}
+
+// WEBKIT Styles
+input[type=range].seek-bar::-webkit-slider-runnable-track {
+  width: $track-width;
+  height: 12.6px;
+  cursor: pointer;
+  box-shadow: $track-shadow;
+  background: $track-background;
+  border-radius: 0.3px;
+  border: $track-border;
+}
+input[type=range].seek-bar::-webkit-slider-thumb {
+  box-shadow: $thumb-shadow;
+  border: $thumb-border;
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  background: $thumb-background;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -1.7px;
+}
+input[type=range].seek-bar:focus::-webkit-slider-runnable-track {
+  background: $track-background;
+}
+
+// MOZ Styles
+input[type=range].seek-bar::-moz-range-track {
+  width: $track-width;
+  height: 12.6px;
+  cursor: pointer;
+  box-shadow: $track-shadow;
+  background: $track-background;
+  border-radius: 0.3px;
+  border: $track-border;
+}
+input[type=range].seek-bar::-moz-range-thumb {
+  box-shadow: $thumb-shadow;
+  border: $thumb-border;
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  background: $thumb-background;
+  cursor: pointer;
+}
+
+// MS Styles
+input[type=range].seek-bar::-ms-track {
+  width: $track-width;
+  height: 12.6px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].seek-bar::-ms-fill-lower {
+  background: $track-background;
+  border: $track-border;
+  border-radius: 0.6px;
+  box-shadow: $track-shadow;
+}
+input[type=range].seek-bar::-ms-fill-upper {
+  background: $track-background;
+  border: $track-border;
+  border-radius: 0.6px;
+  box-shadow: $track-shadow;
+}
+input[type=range].seek-bar::-ms-thumb {
+  box-shadow: $thumb-shadow;
+  border: $thumb-border;
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  background: $thumb-background;
+  cursor: pointer;
+}
+input[type=range].seek-bar:focus::-ms-fill-lower {
+  background: $track-background;
+}
+input[type=range].seek-bar:focus::-ms-fill-upper {
+  background: $track-background;
+}

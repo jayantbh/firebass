@@ -1,3 +1,10 @@
 <div local-class="player-wrapper">
   <div class="player"></div>
+
+  {{fb-player/info author=author title=title}}
+
+  <div local-class="video-controls">
+    {{fb-player/duration time=time duration=duration}}
+    {{fb-player/seek time=time duration=duration isVideoUnstarted=isVideoUnstarted seekToTime=(action "seekToTime")}}
+  </div>
 </div>

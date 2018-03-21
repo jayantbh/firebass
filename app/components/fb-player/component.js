@@ -12,7 +12,6 @@ const YTStatus = {
 };
 
 export default Component.extend({
-  localClassName: 'firebass-youtube-container',
   player: null,
   updaterTimeoutId: null,
 
@@ -21,19 +20,22 @@ export default Component.extend({
   video: null,
   muted: false,
   start: 0,
-  buffered: 0.0,
+  buffered: 0,
   volume: 50,
   speed: 1,
   loop: false,
   time: 0,
   quality: 'small',
   duration: 0,
+  author: null,
+  title: null,
   playerState: -1,
 
   // CPs
-  isVideoPlaying: computed('playerState', () => this.get('playerState') === YTStatus.PLAYING),
-  isVideoPaused: computed('playerState', () => this.get('playerState') === YTStatus.PAUSED),
-  isVideoStopped: computed('playerState', () => this.get('playerState') === YTStatus.ENDED),
+  isVideoUnstarted: computed('playerState', function() { return this.get('playerState') === YTStatus.UNSTARTED }),
+  isVideoPlaying: computed('playerState', function() { return this.get('playerState') === YTStatus.PLAYING }),
+  isVideoPaused: computed('playerState', function() { return this.get('playerState') === YTStatus.PAUSED }),
+  isVideoStopped: computed('playerState', function() { return this.get('playerState') === YTStatus.ENDED }),
 
   // Hooks
   didReceiveAttrs() {
@@ -114,9 +116,11 @@ export default Component.extend({
     const player = this.player;
 
     const oldProperties = this.getProperties('duration', 'time');
+    const { author, title } = player.getVideoData();
     const newProperties = {
       duration: player.getDuration(),
-      playerState: player.getPlayerState()
+      playerState: player.getPlayerState(),
+      author, title
     };
     this.setProperties(newProperties);
     console.log(newProperties);
@@ -128,6 +132,13 @@ export default Component.extend({
     if (videoIsPlayingButWasNot) {
       this.setMinimumAvailablePlaybackQuality();
       this.refreshComponentPropertiesFromPlayer();
+    }
+  },
+
+  actions: {
+    seekToTime(e) {
+      console.log(e.target.value);
+      this.player.seekTo(e.target.value);
     }
   }
 });

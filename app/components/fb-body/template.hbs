@@ -1,13 +1,17 @@
-<p>Dummy todo experiment for firebase testing</p>
-{{fb-player video=videoId}}
-
-<form onsubmit={{action "updateVideoId"}}>
-  {{input input=(action (mut videoUrlOrId) value="target.value") placeholder="Add youtube link"}}
-  <button>Set video</button>
-</form>
-{{#if session.isAuthenticated}}
-  <button>You're signed in!</button>
-{{else}}
-  <button {{action "signIn" "facebook"}}>Sign in</button>
-{{/if}}
-{{yield}}
+<div local-class="body-component">
+  <div local-class="main">
+    <div local-class="sidebar"></div>
+    <div local-class="content">
+      <div local-class="add-new">
+        <form onsubmit={{action "updateVideoId"}}>
+          {{input value=videoUrlOrId input=(action (mut videoUrlOrId) value="target.value") placeholder="Add youtube link"}}
+          <button>Set video</button>
+        </form>
+      </div>
+      <div local-class="track-list"></div>
+    </div>
+  </div>
+  <div local-class="footer">
+    {{fb-player video=videoId}}
+  </div>
+</div>

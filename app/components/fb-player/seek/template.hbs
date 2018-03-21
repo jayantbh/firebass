@@ -1,0 +1,10 @@
+<div local-class="seek-bar-wrapper">
+  <input local-class="seek-bar"
+         type="range"
+         min="0"
+         max="{{duration}}"
+         value="{{time}}"
+         disabled={{isVideoUnstarted}}
+         oninput={{action seekToTime}}
+  >
+</div>

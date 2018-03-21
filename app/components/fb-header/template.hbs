@@ -1,1 +1,8 @@
-<h1>Firebass</h1>
+<div local-class="header-component">
+  <h1>Firebass</h1>
+  {{#if session.isAuthenticated}}
+    <button>You're signed in!</button>
+  {{else}}
+    <button {{action "signIn" "facebook"}}>Sign in</button>
+  {{/if}}
+</div>

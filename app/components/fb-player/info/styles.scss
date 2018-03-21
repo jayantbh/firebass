@@ -1,0 +1,23 @@
+@import '../styles/colors';
+
+.info-box {
+  height: 180px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lighten($shade-2, 5%);
+}
+
+.title {
+  font-size: 18px;
+}
+
+.author {
+  font-size: 14px;
+}
+
+.waiting {
+  font-size: 36px;
+  width: 36px;
+}
