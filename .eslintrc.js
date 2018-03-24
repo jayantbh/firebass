@@ -16,6 +16,12 @@ module.exports = {
   },
   rules: {
   },
+  globals: {
+    YT: {
+      Player: () => {}
+    },
+    gapi: {}
+  },
   overrides: [
     // node files
     {
