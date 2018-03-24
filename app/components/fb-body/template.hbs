@@ -4,11 +4,19 @@
     <div local-class="content">
       <div local-class="add-new">
         <form onsubmit={{action "updateVideoId"}}>
-          {{input value=videoUrlOrId input=(action (mut videoUrlOrId) value="target.value") placeholder="Add youtube link"}}
+          {{input value=searchTerm input=(action "handleSearchInput" value="target.value") placeholder="Add youtube link"}}
           <button>Set video</button>
         </form>
       </div>
-      <div local-class="track-list"></div>
+      <div local-class="search-results">
+        {{#each searchResults.items as |result|}}
+          <div local-class="result-item">
+            <img src="{{result.snippet.thumbnails.default.url}}" alt="Youtube Video Thumbnail"><span>{{result.snippet.title}}</span>
+          </div>
+        {{/each}}
+      </div>
+      <div local-class="track-list">
+      </div>
     </div>
   </div>
   <div local-class="footer">

@@ -25,6 +25,25 @@
   flex-direction: column;
 }
 
+.search-results {
+  position: relative;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-top: 9px;
+
+  &:empty {
+    display: none;
+  }
+
+  .result-item {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+    margin-left: 9px;
+  }
+}
+
 .track-list {
   flex-grow: 1;
   background-color: $shade-4;
