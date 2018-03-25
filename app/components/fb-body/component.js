@@ -42,12 +42,6 @@ export default Component.extend({
   }).drop(),
 
   actions: {
-    updateVideoId() {
-      let searchTerm = this.get('searchTerm');
-      let [, videoId] = searchTerm.match(YOUTUBE_ID_REGEX);
-      this.set('videoId', videoId);
-    },
-
     handleSearchInput(value) {
       this.set('searchTerm', value);
       let videoId;
