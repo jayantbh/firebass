@@ -1,4 +1,4 @@
-@import '../styles/colors';
+@import '../styles/variables';
 
 .body-component {
   display: flex;
@@ -12,8 +12,8 @@
 }
 
 .sidebar {
-  min-width: 240px;
-  flex-grow: 1;
+  width: 240px;
+  flex-shrink: 0;
   background-color: $shade-2;
 }
 
@@ -25,23 +25,91 @@
   flex-direction: column;
 }
 
+
+.search-bar {
+  width: 100%;
+  background: #008f81;
+  border: none;
+  padding: 9px 48px 9px 18px;
+  font-size: 18px;
+  color: #FFF;
+  box-sizing: border-box;
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $faded-white;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: $faded-white;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: $faded-white;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: $faded-white;
+  }
+}
+
 .search-results {
   position: relative;
   display: flex;
+  max-height: 261px;
   overflow-x: auto;
   overflow-y: hidden;
-  margin-top: 9px;
+  padding: 9px 18px;
+  transition: max-height $transition-1;
 
-  &:empty {
-    display: none;
+  &.no-search-term {
+    max-height: 0; // TODO
   }
+}
 
-  .result-item {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 0;
-    margin-left: 9px;
+.result-item {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 0;
+  margin-left: 9px;
+  padding: 9px;
+  border-radius: 3px;
+  box-shadow: $box-shadow-1;
+  cursor: pointer;
+  line-height: 18px;
+  transition: background $transition-1, box-shadow $transition-1;
+
+  &:hover {
+    background: $shade-2;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.12);
   }
+  &:first-of-type {
+    margin-left: 0;
+  }
+}
+
+.result-thumbnail {
+  margin-bottom: 3px;
+  border-radius: 3px;
+  background: url("/images/loader.svg") no-repeat center;
+  background-size: 40px;
+}
+
+.result-title {
+  color: #FFF;
+  overflow: hidden;
+  height: calc(5 * 18px);
+  margin-bottom: 6px;
+}
+
+.result-actions {
+  padding: 0 3px;
+  transition: color $transition-1;
+
+  &:hover {
+    color: #FFF;
+  }
+}
+
+.info-text {
+  color: #FFF;
+  font-size: 18px;
 }
 
 .track-list {

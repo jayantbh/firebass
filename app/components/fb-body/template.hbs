@@ -1,18 +1,33 @@
 <div local-class="body-component">
   <div local-class="main">
-    <div local-class="sidebar"></div>
+    <div local-class="sidebar">
+      <div class="songs-list">
+        <div class="title">My Songs</div>
+        <ul>
+          {{#each songs as |song|}}
+            <li>{{song.title}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
     <div local-class="content">
       <div local-class="add-new">
-        <form onsubmit={{action "updateVideoId"}}>
-          {{input value=searchTerm input=(action "handleSearchInput" value="target.value") placeholder="Add youtube link"}}
-          <button>Set video</button>
+        <form {{action "updateVideoId" on="submit" preventDefault=true}}>
+          {{input local-class="search-bar" value=searchTerm input=(action "handleSearchInput" value="target.value") placeholder="Paste link, id, or term to search on youtube..."}}
         </form>
       </div>
-      <div local-class="search-results">
+      <div local-class="search-results {{unless searchTerm.length "no-search-term"}}">
         {{#each searchResults.items as |result|}}
-          <div local-class="result-item">
-            <img src="{{result.snippet.thumbnails.default.url}}" alt="Youtube Video Thumbnail"><span>{{result.snippet.title}}</span>
+          <div local-class="result-item" {{action "addToQueue" result}}>
+            <img height="90" width="120" local-class="result-thumbnail" src="{{result.snippet.thumbnails.default.url}}" alt="Youtube Video Thumbnail">
+            <span local-class="result-title">{{result.snippet.title}}</span>
+            <div local-class="result-actions add-to-queue" {{action "addToQueue" result bubbles=false}}>🚃 Add to queue</div>
+            {{#unless (array-contains songs result.id.videoId property="videoId")}}
+              <div local-class="result-actions add-to-songs" {{action "addToSongs" result bubbles=false}}>🎧 Add to songs</div>
+            {{/unless}}
           </div>
+        {{else if (and searchYoutube.lastSuccessful.value (not searchYoutube.isRunning) searchTerm.length)}}
+          <span local-class="info-text">No results found for "{{searchTerm}}".</span>
         {{/each}}
       </div>
       <div local-class="track-list">
