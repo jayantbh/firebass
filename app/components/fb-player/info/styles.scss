@@ -8,14 +8,35 @@
   justify-content: center;
   background-color: lighten($shade-2, 5%);
   color: #ffffff;
+  position: relative;
+}
+
+.art, .overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  padding: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .title {
   font-size: 18px;
+  z-index: 1;
+  height: 4em;
+  overflow: hidden;
 }
 
 .author {
   font-size: 14px;
+  z-index: 1;
+  margin-top: 1em;
 }
 
 .waiting {

@@ -1,7 +1,11 @@
 <div local-class="info-box">
   {{#if title}}
-    <div local-class="title">{{title}}</div>
-    <div local-class="author">{{author}}</div>
+    <img local-class="art" src="{{art}}">
+    <div local-class="overlay"></div>
+    <div local-class="content">
+      <div local-class="title">{{title}}</div>
+      <div local-class="author">{{author}}</div>
+    </div>
   {{else}}
     <div local-class="waiting">⏳</div>
   {{/if}}
