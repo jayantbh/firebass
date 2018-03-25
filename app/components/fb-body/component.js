@@ -11,7 +11,7 @@ export default Component.extend({
   tagName: '',
 
   searchTerm: 'https://www.youtube.com/watch?v=oWCrc3MwXPI',
-  videoId: '',
+  video: null,
   searchResults: null,
   songs: null,
 

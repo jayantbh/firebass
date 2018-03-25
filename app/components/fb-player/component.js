@@ -43,7 +43,7 @@ export default Component.extend({
     if (this.video && this.player) {
       this.stopRefreshingComponentPropertiesFromPlayer();
 
-      this.player.loadVideoById(this.video);
+      this.player.loadVideoById(this.video.get('videoId'));
       this.refreshComponentPropertiesFromPlayer();
     }
   },

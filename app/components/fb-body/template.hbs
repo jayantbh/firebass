@@ -5,7 +5,7 @@
         <div class="title">My Songs</div>
         <ul>
           {{#each songs as |song|}}
-            <li {{action (mut videoId) song.videoId}}>{{song.title}}</li>
+            <li {{action (mut video) song}}>{{song.title}}</li>
           {{/each}}
         </ul>
       </div>
@@ -33,6 +33,6 @@
     </div>
   </div>
   <div local-class="footer">
-    {{fb-player video=videoId}}
+    {{fb-player video=video}}
   </div>
 </div>
