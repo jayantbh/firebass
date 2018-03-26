@@ -6,6 +6,7 @@ export default DS.Model.extend({
   title: DS.attr('string'),
   thumbnail: DS.attr('string'),
   publishedAt: DS.attr('date'),
+  addedAt: DS.attr('date'),
   description: DS.attr('string'),
   channelTitle: DS.attr('string')
 });
