@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default FirebaseAdapter.extend({
   session: service(),
-  pathForType() {
-    return this.get('session.currentUser.uid');
+  pathForType(type) {
+    return `${this.get('session.currentUser.uid')}/${type}`;
   }
 });
