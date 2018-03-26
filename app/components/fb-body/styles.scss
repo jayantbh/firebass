@@ -23,6 +23,7 @@
   font-size: 18px;
   color: #FFF;
   margin-bottom: 9px;
+  font-family: 'IBM Plex Serif', serif;
 }
 
 .song-item {
@@ -33,6 +34,7 @@
   padding: 9px 0;
   cursor: pointer;
   transition: color $transition-1;
+  font-family: 'IBM Plex Serif', serif;
 
   &:hover {
     color: #FFF;
