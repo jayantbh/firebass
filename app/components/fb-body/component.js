@@ -14,6 +14,7 @@ export default Component.extend({
   video: null,
   searchResults: null,
   songs: null,
+  queue: null,
 
   // Allow searching for either just videos, or videos and playlists, or just playlists
   searchType: 'video', // Planned: playlist | video,playlist
