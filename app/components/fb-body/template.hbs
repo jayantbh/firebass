@@ -4,7 +4,7 @@
       <div local-class="songs-list">
         <div local-class="title">My Songs</div>
         <ul>
-          {{#each (sort-by "publishedAt:desc" songs) as |song|}}
+          {{#each (sort-by "addedAt:desc" songs) as |song|}}
             <li local-class="song-item" {{action (mut video) song}}><span local-class="song-item-title">{{song.title}}</span> <div local-class="delete-song" {{action "removeSong" song bubbles=false}}>{{inline-svg "icons/cross"}}</div></li>
           {{/each}}
         </ul>
