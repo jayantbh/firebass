@@ -36,7 +36,8 @@ export default Component.extend({
       thumbnail: video.snippet.thumbnails.high.url || video.snippet.thumbnails.default.url,
       publishedAt: video.snippet.publishedAt,
       description: video.snippet.description,
-      channelTitle: video.snippet.channelTitle
+      channelTitle: video.snippet.channelTitle,
+      addedAt: new Date().getTime()
     });
     return yield song.save();
   }).drop(),
@@ -60,6 +61,9 @@ export default Component.extend({
     addToSongs(video) {
       console.log(video);
       this.get('addSong').perform(video).then((song) => this.get('songs').addObject(song)).catch(() => {});
+    },
+    removeSong(song) {
+      song.destroyRecord();
     }
   }
 });
