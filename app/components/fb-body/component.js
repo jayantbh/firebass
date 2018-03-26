@@ -11,7 +11,7 @@ const DEBOUNCE_DURATION = 500;
 export default Component.extend({
   tagName: '',
 
-  searchTerm: 'linkin',
+  searchTerm: '',
   video: null,
   searchResults: null,
   songs: null,
