@@ -29,16 +29,24 @@ export default Route.extend({
   },
 
   beforeModel: function() {
-    return this.get('session').fetch().catch(function() {});
+    // If no session exists, or attempting to access session throws an error, redirect to signin route
+    try {
+      // If session is not authenticated, attempt to fetch a new session, else do nothing and stay on route
+      // If session fetching fails, redirect to signin route
+      if (!this.get('session.isAuthenticated')) {
+        return this.get('session').fetch().catch(() => {
+          this.transitionTo('signin');
+        });
+      }
+    } catch (e) {
+      this.transitionTo('signin');
+    }
   },
 
   model() {
-    if (this.get('session.currentUser.uid')) {
-      return RSVP.hash({
-        songs: this.getOrCreatePlaylist('my-songs'),
-        queue: this.getOrCreatePlaylist('queue')
-      });
-    }
-    return { songs: [], queue: this.createQueue() };
+    return RSVP.hash({
+      songs: this.getOrCreatePlaylist('my-songs'),
+      queue: this.getOrCreatePlaylist('queue')
+    });
   }
 });

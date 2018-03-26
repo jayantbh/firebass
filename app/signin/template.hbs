@@ -1,0 +1,15 @@
+<div local-class="application">
+  <div local-class="brand">Welcome to Firebass!</div>
+  <div local-class="title">
+    {{#if session.isAuthenticated}}
+      {{inline-svg "loader"}} Taking you to the app...
+    {{else}}
+      Please sign in using Facebook to continue
+    {{/if}}
+  </div>
+  {{#if session.isAuthenticated}}
+    <button local-class="sign-in signed-in facebook-sign-in">You're signed in!</button>
+  {{else}}
+    <button local-class="sign-in facebook-sign-in" {{action "signIn" "facebook"}}>Sign in with Facebook</button>
+  {{/if}}
+</div>

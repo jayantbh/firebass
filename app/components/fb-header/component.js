@@ -5,15 +5,12 @@ export default Component.extend({
   tagName: '',
 
   session: service(),
+  router: service(),
 
   actions: {
-    signIn: function(provider) {
-      this.get('session').open('firebase', { provider: provider }).then(function(data) {
-        console.log(data.currentUser);
-      });
-    },
-    signOut: function() {
-      this.get('session').close();
+    signOut: async function() {
+      await this.get('session').close();
+      this.get('router').transitionTo('signin');
     }
   }
 });

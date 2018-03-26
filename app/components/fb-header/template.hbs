@@ -1,8 +1,6 @@
 <div local-class="header-component">
   <h1 local-class="title">Firebass</h1>
   {{#if session.isAuthenticated}}
-    <button>You're signed in!</button>
-  {{else}}
-    <button {{action "signIn" "facebook"}}>Sign in</button>
+    <button {{action "signOut" "facebook"}}>Sign out</button>
   {{/if}}
 </div>
