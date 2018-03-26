@@ -117,10 +117,13 @@ export default Component.extend({
 
     const oldProperties = this.getProperties('duration', 'time');
     const { author, title } = player.getVideoData();
+
+    let playerState, oldPlayerState = this.get('playerState'), newPlayerState = player.getPlayerState();
+    playerState = newPlayerState === YTStatus.BUFFERING ? oldPlayerState : newPlayerState;
+
     const newProperties = {
       duration: player.getDuration(),
-      playerState: player.getPlayerState(),
-      author, title
+      playerState, author, title
     };
     this.setProperties(newProperties);
     console.log(newProperties);
@@ -136,9 +139,8 @@ export default Component.extend({
   },
 
   actions: {
-    seekToTime(e) {
-      console.log(e.target.value);
-      this.player.seekTo(e.target.value);
+    seekToTime(value) {
+      this.player.seekTo(value);
     }
   }
 });

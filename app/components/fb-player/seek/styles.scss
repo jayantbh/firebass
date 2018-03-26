@@ -56,7 +56,7 @@ input[type=range].seek-bar {
     background: $thumb-background;
     cursor: pointer;
     -webkit-appearance: none;
-    margin-top: -4.5px;
+    margin-top: -4px;
   }
   &[disabled]::-webkit-slider-thumb {
     background: $thumb-background-disabled;
