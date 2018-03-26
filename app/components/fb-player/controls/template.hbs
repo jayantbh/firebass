@@ -1,0 +1,16 @@
+<div local-class="controls-panel">
+  {{#if video}}
+    {{#unless isVideoPlaying}}
+      <button local-class="player-control" {{action "playerControl" "play" on="click"}}>{{inline-svg "icons/play"}}</button>
+    {{/unless}}
+    {{#if isVideoPlaying}}
+      <button local-class="player-control" {{action  "playerControl" "pause" on="click"}}>{{inline-svg "icons/pause"}}</button>
+    {{/if}}
+    {{#unless isVideoUnstarted}}
+      <button local-class="player-control stop" {{action  "playerControl" "stop" on="click"}}>{{inline-svg "icons/stop"}}</button>
+    {{/unless}}
+  {{else}}
+    <span local-class="no-video-text">Select a track to play</span>
+  {{/if}}
+</div>
+

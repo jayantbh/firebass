@@ -1,0 +1,36 @@
+.controls-panel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 9px;
+}
+
+.player-control {
+  height: 50px;
+  width: 50px;
+  padding: 0 9px;
+  background-color: $shade-1;
+  border: none;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $box-shadow-1;
+  cursor: pointer;
+
+  svg {
+    height: inherit;
+    width: inherit;
+  }
+}
+
+.stop {
+  height: 35px;
+  width: 35px;
+  margin-left: 9px;
+}
+
+.no-video-text {
+  color: #FFF;
+  font-size: 18px;
+}
