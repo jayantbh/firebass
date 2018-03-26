@@ -14,6 +14,11 @@ module.exports = function(defaults) {
       patterns: [
         '/api/v1/(.+)'
       ],
+    },
+    svg: {
+      paths: [
+        'public/images'
+      ]
     }
   });
 
