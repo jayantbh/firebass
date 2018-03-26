@@ -1,30 +1,32 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import { task } from 'ember-concurrency';
 import RSVP from 'rsvp';
+import { capitalize } from '@ember/string';
 
 export default Route.extend({
   session: service(),
 
-  createQueue() {
+  createPlaylist(type) {
     return this.store.createRecord('playlist', {
-      name: 'Queue',
-      entities: [],
+      name: type.split('-').map(capitalize).join(' '),
       createdAt: new Date().getTime(),
-      type: 'queue',
-      access: 'private'
+      type, access: 'private'
     });
   },
 
-  getOrCreateQueuePlaylist: task(function * () {
+  getOrCreatePlaylist: async function (type) {
+    let playlist;
+
     try {
-      let queue = yield this.store.query('playlist', { type: 'queue' });
-      if (queue) return queue;
+      playlist = await this.store.query('playlist', { orderBy: 'type', equalTo: type });
+      if (playlist.get('length')) return playlist.get('firstObject');
     } catch (e) { /* do nothing */ }
 
-    let queue = this.createQueue();
-    return yield queue.save();
-  }).drop(),
+
+    playlist = this.createPlaylist(type);
+    await playlist.save();
+    return playlist
+  },
 
   beforeModel: function() {
     return this.get('session').fetch().catch(function() {});
@@ -33,8 +35,8 @@ export default Route.extend({
   model() {
     if (this.get('session.currentUser.uid')) {
       return RSVP.hash({
-        songs: this.store.findAll('playable-entity'),
-        queue: this.get('getOrCreateQueuePlaylist').perform()
+        songs: this.getOrCreatePlaylist('my-songs'),
+        queue: this.getOrCreatePlaylist('queue')
       });
     }
     return { songs: [], queue: this.createQueue() };

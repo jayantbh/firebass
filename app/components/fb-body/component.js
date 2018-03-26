@@ -3,6 +3,7 @@ import fetch from 'fetch';
 import ENV from 'firebass/config/environment';
 import { task, timeout } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
+import { ytObjectToPlayableEntityModel } from 'firebass/lib/yt-object'
 
 const YOUTUBE_ID_REGEX = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/i;
 const DEBOUNCE_DURATION = 500;
@@ -10,7 +11,7 @@ const DEBOUNCE_DURATION = 500;
 export default Component.extend({
   tagName: '',
 
-  searchTerm: 'https://www.youtube.com/watch?v=oWCrc3MwXPI',
+  searchTerm: 'linkin',
   video: null,
   searchResults: null,
   songs: null,
@@ -30,16 +31,7 @@ export default Component.extend({
   }).restartable(),
 
   addSong: task(function * (video) {
-    let song = this.get('store').createRecord('playable-entity', {
-      videoId: video.id.videoId,
-      kind: video.id.kind,
-      title: video.snippet.title,
-      thumbnail: video.snippet.thumbnails.high.url || video.snippet.thumbnails.default.url,
-      publishedAt: video.snippet.publishedAt,
-      description: video.snippet.description,
-      channelTitle: video.snippet.channelTitle,
-      addedAt: new Date().getTime()
-    });
+    let song = this.get('store').createRecord('playable-entity', ytObjectToPlayableEntityModel(video));
     return yield song.save();
   }).drop(),
 
@@ -56,15 +48,15 @@ export default Component.extend({
       this.get('searchYoutube').perform(videoId || value).then((results) => this.set('searchResults', results)).catch(() => {});
     },
 
-    addToQueue(video) {
-      console.log(video);
+    addToList: async function (track, list) {
+      let song = await this.get('addSong').perform(track).catch(() => {});
+      this.get(`${list}.entities`).addObject(song);
+      this.get(list).save();
     },
-    addToSongs(video) {
-      console.log(video);
-      this.get('addSong').perform(video).then((song) => this.get('songs').addObject(song)).catch(() => {});
-    },
-    removeSong(song) {
+
+    removeSong(song, source) {
       song.destroyRecord();
+      source.save();
     }
   }
 });

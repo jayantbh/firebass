@@ -4,8 +4,10 @@
       <div local-class="songs-list">
         <div local-class="title">My Songs</div>
         <ul>
-          {{#each (sort-by "addedAt:desc" songs) as |song|}}
-            <li local-class="song-item" {{action (mut video) song}}><span local-class="song-item-title">{{song.title}}</span> <div local-class="delete-song" {{action "removeSong" song bubbles=false}}>{{inline-svg "icons/cross"}}</div></li>
+          {{#each (sort-by "addedAt:desc" songs.entities) as |song|}}
+            <li local-class="song-item" {{action (mut video) song}}><span local-class="song-item-title">{{song.title}}</span> <div local-class="delete-song" {{action "removeSong" song songs bubbles=false}}>{{inline-svg "icons/cross"}}</div></li>
+          {{else}}
+            <li local-class="info-text">Add some songs to your library to get started</li>
           {{/each}}
         </ul>
       </div>
@@ -19,16 +21,26 @@
           <div local-class="result-item" {{action "addToQueue" result}}>
             <img height="90" width="120" local-class="result-thumbnail" src="{{result.snippet.thumbnails.default.url}}" alt="Youtube Video Thumbnail">
             <span local-class="result-title">{{result.snippet.title}}</span>
-            <div local-class="result-actions add-to-queue" {{action "addToQueue" result bubbles=false}}>🚃 Add to queue</div>
-            {{#unless (array-contains songs result.id.videoId property="videoId")}}
-              <div local-class="result-actions add-to-songs" {{action "addToSongs" result bubbles=false}}>🎧 Add to songs</div>
+            {{#unless (array-contains queue.entities result.id.videoId property="videoId")}}
+              <div local-class="result-actions add-to-queue" {{action "addToList" result "queue" bubbles=false}}>🚃 Add to queue</div>
+            {{/unless}}
+            {{#unless (array-contains songs.entities result.id.videoId property="videoId")}}
+              <div local-class="result-actions add-to-songs" {{action "addToList" result "queue" bubbles=false}}>🎧 Add to songs</div>
             {{/unless}}
           </div>
         {{else if (and searchYoutube.lastSuccessful.value (not searchYoutube.isRunning) searchTerm.length)}}
-          <span local-class="info-text">No results found for "{{searchTerm}}".</span>
+          <span local-class="info-text">No results found for "{{searchTerm}}"</span>
         {{/each}}
       </div>
       <div local-class="track-list">
+        <div local-class="title">Queue</div>
+        <ul>
+          {{#each (sort-by "addedAt:desc" queue.entities) as |song|}}
+            <li local-class="song-item queue-item" {{action (mut video) song}}><span local-class="song-item-title">{{song.title}}</span> <div local-class="delete-song" {{action "removeSong" song queue bubbles=false}}>{{inline-svg "icons/cross"}}</div></li>
+          {{else}}
+            <li local-class="info-text">Add some songs to your queue to get started</li>
+          {{/each}}
+        </ul>
       </div>
     </div>
   </div>
