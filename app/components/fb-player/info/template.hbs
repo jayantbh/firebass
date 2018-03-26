@@ -1,10 +1,10 @@
 <div local-class="info-box">
-  {{#if title}}
-    <img local-class="art" src="{{art}}">
+  {{#if video}}
+    <img local-class="art" src="{{video.thumbnail}}">
     <div local-class="overlay"></div>
     <div local-class="content">
-      <div local-class="title">{{title}}</div>
-      <div local-class="author">{{author}}</div>
+      <div local-class="title">{{video.title}}</div>
+      <div local-class="author">{{video.channelTitle}}</div>
     </div>
   {{else}}
     <div local-class="waiting">⏳</div>
