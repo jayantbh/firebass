@@ -49,13 +49,17 @@ export default Component.extend({
     },
 
     addToList: async function (track, list) {
-      let song = await this.get('addSong').perform(track).catch(() => {});
+      let song;
+      if (!track.id) {
+        song = await this.get('addSong').perform(track).catch(() => {});
+      } else { song = track; }
+
       this.get(`${list}.entities`).addObject(song);
       this.get(list).save();
     },
 
     removeSong(song, source) {
-      song.destroyRecord();
+      source.get('entities').removeObject(song);
       source.save();
     }
   }

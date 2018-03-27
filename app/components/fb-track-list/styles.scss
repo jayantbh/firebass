@@ -29,6 +29,14 @@
   }
 }
 
+.song-item-title {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  padding: 2px 0;
+}
+
 .queue-item {
   color: darken($shade-4, 25%);
 
@@ -40,4 +48,8 @@
 .info-text {
   color: #FFF;
   font-size: 18px;
+}
+
+.add-to-queue svg {
+  transform: rotate(45deg);
 }

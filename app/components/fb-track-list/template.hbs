@@ -1,6 +1,12 @@
 <ul>
   {{#each (sort-by "addedAt:desc" songs.entities) as |song|}}
-    <li local-class="song-item {{if isQueue "queue-item"}} {{if (and video.videoId (eq song.videoId video.videoId)) "is-playing"}}" {{action updateVideo song}}><span local-class="song-item-title">{{song.title}}</span> <div local-class="delete-song" {{action "removeSong" song songs bubbles=false}}>{{inline-svg "icons/cross"}}</div></li>
+    <li local-class="song-item {{if isQueue "queue-item"}} {{if (and video.videoId (eq song.videoId video.videoId)) "is-playing"}}" {{action updateVideo song}}>
+      <span local-class="song-item-title">{{song.title}}</span>
+      {{#if (or (and (not isQueue) (not (array-contains queue.entities song))) (and isQueue (not (array-contains mySongs.entities song))))}}
+        <div local-class="add-to-queue" title="Add to queue" {{action addToList song (if isQueue "songs" "queue") bubbles=false}}>{{inline-svg "icons/cross"}}</div>
+      {{/if}}
+      <div local-class="delete-song" title="Remove from list" {{action removeSong song songs bubbles=false}}>{{inline-svg "icons/cross"}}</div>
+    </li>
   {{else}}
     <li local-class="info-text">Add some songs to your library to get started</li>
   {{/each}}
