@@ -18,7 +18,7 @@
       </div>
       <div local-class="search-results {{unless searchTerm.length "no-search-term"}}">
         {{#each searchResults.items as |result|}}
-          <div local-class="result-item" {{action "addToQueue" result}}>
+          <div local-class="result-item" {{action "addToList" result "queue" bubbles=false}}>
             <img height="90" width="120" local-class="result-thumbnail" src="{{result.snippet.thumbnails.default.url}}" alt="Youtube Video Thumbnail">
             <span local-class="result-title">{{result.snippet.title}}</span>
             {{#unless (array-contains queue.entities result.id.videoId property="videoId")}}
