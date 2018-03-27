@@ -16,7 +16,7 @@ module.exports = function(defaults) {
       ],
     },
     'esw-index': {
-      excludeScope: [/\/__\/auth\/handler(.*)?$/],
+      excludeScope: [/\/__(.*)?$/],
     },
     svg: {
       paths: [
