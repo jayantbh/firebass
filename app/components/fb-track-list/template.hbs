@@ -1,0 +1,7 @@
+<ul>
+  {{#each (sort-by "addedAt:desc" songs.entities) as |song|}}
+    <li local-class="song-item {{if isQueue "queue-item"}} {{if (and video.videoId (eq song.videoId video.videoId)) "is-playing"}}" {{action updateVideo song}}><span local-class="song-item-title">{{song.title}}</span> <div local-class="delete-song" {{action "removeSong" song songs bubbles=false}}>{{inline-svg "icons/cross"}}</div></li>
+  {{else}}
+    <li local-class="info-text">Add some songs to your library to get started</li>
+  {{/each}}
+</ul>

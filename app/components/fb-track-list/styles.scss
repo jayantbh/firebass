@@ -1,0 +1,43 @@
+.song-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: lighten($shade-2, 50%);
+  padding: 9px;
+  cursor: pointer;
+  transition: color $transition-1;
+  font-family: 'IBM Plex Serif', serif;
+
+  &:hover {
+    color: #FFF;
+  }
+
+  &.is-playing {
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  svg {
+    flex-shrink: 0;
+    height: 10px;
+    width: 10px;
+    margin-left: 9px;
+
+    path {
+      fill: #FFF;
+    }
+  }
+}
+
+.queue-item {
+  color: darken($shade-4, 25%);
+
+  &:hover {
+    color: lighten($shade-4, 55%)
+  }
+}
+
+.info-text {
+  color: #FFF;
+  font-size: 18px;
+}

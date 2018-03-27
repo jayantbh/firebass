@@ -3,13 +3,7 @@
     <div local-class="sidebar">
       <div local-class="songs-list">
         <div local-class="title">My Songs</div>
-        <ul>
-          {{#each (sort-by "addedAt:desc" songs.entities) as |song|}}
-            <li local-class="song-item" {{action (mut video) song}}><span local-class="song-item-title">{{song.title}}</span> <div local-class="delete-song" {{action "removeSong" song songs bubbles=false}}>{{inline-svg "icons/cross"}}</div></li>
-          {{else}}
-            <li local-class="info-text">Add some songs to your library to get started</li>
-          {{/each}}
-        </ul>
+        {{fb-track-list songs=songs video=video updateVideo=(action (mut video))}}
       </div>
     </div>
     <div local-class="content">
@@ -34,13 +28,7 @@
       </div>
       <div local-class="track-list">
         <div local-class="title">Queue</div>
-        <ul>
-          {{#each (sort-by "addedAt:desc" queue.entities) as |song|}}
-            <li local-class="song-item queue-item" {{action (mut video) song}}><span local-class="song-item-title">{{song.title}}</span> <div local-class="delete-song" {{action "removeSong" song queue bubbles=false}}>{{inline-svg "icons/cross"}}</div></li>
-          {{else}}
-            <li local-class="info-text">Add some songs to your queue to get started</li>
-          {{/each}}
-        </ul>
+        {{fb-track-list songs=queue video=video updateVideo=(action (mut video)) isQueue=true}}
       </div>
     </div>
   </div>
