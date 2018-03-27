@@ -25,7 +25,7 @@
               <div local-class="result-actions add-to-queue" {{action "addToList" result "queue" bubbles=false}}>🚃 Add to queue</div>
             {{/unless}}
             {{#unless (array-contains songs.entities result.id.videoId property="videoId")}}
-              <div local-class="result-actions add-to-songs" {{action "addToList" result "queue" bubbles=false}}>🎧 Add to songs</div>
+              <div local-class="result-actions add-to-songs" {{action "addToList" result "songs" bubbles=false}}>🎧 Add to songs</div>
             {{/unless}}
           </div>
         {{else if (and searchYoutube.lastSuccessful.value (not searchYoutube.isRunning) searchTerm.length)}}
