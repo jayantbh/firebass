@@ -15,6 +15,9 @@ module.exports = function(defaults) {
         '/api/v1/(.+)'
       ],
     },
+    'esw-index': {
+      excludeScope: [/\/__\/auth\/handler(.*)?$/],
+    },
     svg: {
       paths: [
         'public/images'
