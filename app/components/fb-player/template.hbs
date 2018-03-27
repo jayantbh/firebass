@@ -4,7 +4,7 @@
   {{fb-player/info video=video}}
 
   <div local-class="video-controls">
-    {{fb-player/duration time=time duration=duration}}
+    {{fb-player/duration time=time duration=duration isVideoUnstarted=isVideoUnstarted}}
     {{fb-player/seek time=time duration=duration isVideoUnstarted=isVideoUnstarted seekToTime=(action "seekToTime")}}
     {{fb-player/controls
       time=time

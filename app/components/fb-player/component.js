@@ -115,14 +115,15 @@ export default Component.extend({
   onPlayerStateChange() {
     const player = this.player;
 
-    const oldProperties = this.getProperties('duration', 'time');
     const { author, title } = player.getVideoData();
 
-    let playerState, oldPlayerState = this.get('playerState'), newPlayerState = player.getPlayerState();
+    let playerState, oldPlayerState = this.playerState, newPlayerState = player.getPlayerState();
     playerState = newPlayerState === YTStatus.BUFFERING ? oldPlayerState : newPlayerState;
 
     const newProperties = {
       duration: player.getDuration(),
+      buffered: player.getVideoLoadedFraction(),
+      time: player.getCurrentTime(),
       playerState, author, title
     };
     this.setProperties(newProperties);
@@ -130,9 +131,7 @@ export default Component.extend({
 
     this.stopRefreshingComponentPropertiesFromPlayer();
 
-    const videoIsPlayingButWasNot = this.playerState === YTStatus.PLAYING && oldProperties.playerState !== YTStatus.PLAYING;
-
-    if (videoIsPlayingButWasNot) {
+    if (newPlayerState === YTStatus.PLAYING) {
       this.setMinimumAvailablePlaybackQuality();
       this.refreshComponentPropertiesFromPlayer();
     }
