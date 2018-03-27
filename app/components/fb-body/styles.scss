@@ -17,6 +17,7 @@
   padding: 9px;
   box-sizing: border-box;
   background-color: $shade-2;
+  overflow-y: auto;
 }
 
 .title {
@@ -158,6 +159,7 @@
   flex-grow: 1;
   background-color: $shade-4;
   padding: 27px;
+  overflow-y: auto;
 }
 
 .queue-item {
