@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 
-const PLAYER_UPDATE_INTERVAL = 500;
+const PLAYER_UPDATE_INTERVAL = 1000;
 const YTStatus = {
   UNSTARTED: -1,
   ENDED: 0,
