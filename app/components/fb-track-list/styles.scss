@@ -1,3 +1,5 @@
+@import '../styles/variables';
+
 .song-item {
   display: flex;
   align-items: center;
@@ -14,19 +16,30 @@
 
   &.is-playing {
     border-radius: 3px;
-    background: rgba(0, 0, 0, 0.08);
+    background: $faded-black-1;
   }
 
   svg {
     flex-shrink: 0;
     height: 10px;
     width: 10px;
-    margin-left: 9px;
 
     path {
       fill: #FFF;
     }
   }
+}
+
+.song-item-actions {
+  margin-left: 9px;
+  border-radius: 50%;
+  background: $faded-black-1;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .song-item-title {
