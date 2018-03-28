@@ -2,7 +2,6 @@
   <div local-class="main">
     <div local-class="sidebar">
       <div local-class="songs-list">
-        <div local-class="title">My Songs</div>
         {{fb-track-list songs=songs queue=queue video=video updateVideo=(action (mut video)) removeSong=(action "removeSong") addToList=(action "addToList")}}
       </div>
     </div>
@@ -27,7 +26,6 @@
         {{/each}}
       </div>
       <div local-class="track-list">
-        <div local-class="title">Queue</div>
         {{fb-track-list songs=queue mySongs=songs video=video updateVideo=(action (mut video)) addToList=(action "addToList") removeSong=(action "removeSong") isQueue=true}}
       </div>
     </div>

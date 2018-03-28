@@ -1,3 +1,4 @@
+<div local-class="title">{{songs.name}}</div>
 <ul>
   {{#each (sort-by "addedAt:desc" songs.entities) as |song|}}
     <li local-class="song-item {{if isQueue "queue-item"}} {{if (and video.videoId (eq song.videoId video.videoId)) "is-playing"}}" {{action updateVideo song}}>

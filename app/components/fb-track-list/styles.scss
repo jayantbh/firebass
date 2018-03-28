@@ -1,5 +1,13 @@
 @import '../styles/variables';
 
+.title {
+  font-size: 18px;
+  color: #FFF;
+  margin-bottom: 9px;
+  margin-left: 9px;
+  font-family: 'IBM Plex Serif', serif;
+}
+
 .song-item {
   display: flex;
   align-items: center;
