@@ -4,6 +4,7 @@ import ENV from 'firebass/config/environment';
 import { task, timeout } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 import { ytObjectToPlayableEntityModel } from 'firebass/lib/yt-object'
+import { computed } from '@ember/object';
 
 const YOUTUBE_ID_REGEX = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/ ]{11})/i;
 const DEBOUNCE_DURATION = 500;
@@ -21,6 +22,16 @@ export default Component.extend({
   searchType: 'video', // Planned: playlist | video,playlist
 
   store: service(),
+
+  indexOfTrackInCurrentPlaylist: computed('video', 'queue', function () {
+    return this.get('queue.entities').indexOf(this.video);
+  }),
+
+  nextTrackInCurrentPlaylist: computed('indexOfTrackInCurrentPlaylist', function () {
+    let index = this.get('indexOfTrackInCurrentPlaylist') + 1;
+    if (index === this.get('queue.entities.length')) return null;
+    return this.get('queue.entities').objectAt(index);
+  }),
 
   searchYoutube: task(function * (term) {
     if (!term.length) return;
@@ -61,6 +72,11 @@ export default Component.extend({
     removeSong(song, source) {
       source.get('entities').removeObject(song);
       source.save();
+    },
+
+    onVideoEnded() {
+      let nextTrackInCurrentPlaylist = this.get('nextTrackInCurrentPlaylist');
+      this.set('video', nextTrackInCurrentPlaylist);
     }
   }
 });

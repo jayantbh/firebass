@@ -135,6 +135,14 @@ export default Component.extend({
       this.setMinimumAvailablePlaybackQuality();
       this.refreshComponentPropertiesFromPlayer();
     }
+
+    if (newPlayerState === YTStatus.ENDED) {
+      this.onVideoEnded();
+    }
+  },
+
+  onVideoEnded() {
+
   },
 
   actions: {
