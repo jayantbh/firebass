@@ -1,3 +1,7 @@
+@import 'ember-basic-dropdown';
+@import '../styles/variables';
+
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -49,4 +53,77 @@ table {
 
 * {
   outline: none;
+}
+
+
+hr {
+  border: 1px solid $faded-black-3;
+  width: 85%;
+}
+
+:global(.ember-basic-dropdown-trigger){
+  cursor: pointer;
+}
+
+:global(.ember-basic-dropdown-content) {
+  padding: 9px;
+  border-radius: 3px;
+  background-color: lighten($shade-2, 5%);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  color: darken($shade-1, 5%);
+  border: 1px solid $shade-3;
+  box-shadow: $box-shadow-3;
+}
+
+@keyframes drop-fade-below {
+  0%   {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes drop-fade-above {
+  0%   {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+:global(.ember-basic-dropdown-content) {
+  will-change: transform, opacity;
+  &:global(.ember-basic-dropdown-content--below.ember-basic-dropdown--transitioning-in) {
+    animation: drop-fade-below .15s;
+  }
+  &:global(.ember-basic-dropdown-content--below.ember-basic-dropdown--transitioning-out) {
+    animation: drop-fade-below .15s reverse;
+  }
+  &:global(.ember-basic-dropdown-content--above.ember-basic-dropdown--transitioning-in) {
+    animation: drop-fade-above .15s;
+  }
+  &:global(.ember-basic-dropdown-content--above.ember-basic-dropdown--transitioning-out) {
+    animation: drop-fade-above .15s reverse;
+  }
+}
+
+input {
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $faded-white;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: $faded-white;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: $faded-white;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: $faded-white;
+  }
 }

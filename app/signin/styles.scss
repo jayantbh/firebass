@@ -16,7 +16,7 @@
 
 .brand, .title {
   font-size: 18px;
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   color: lighten($shade-3, 55%);
   text-align: center;
   margin-bottom: 18px;
@@ -41,7 +41,7 @@
   background: #e3fffc;
   padding: 9px 18px;
   font-size: 16px;
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   color: darken($shade-3, 10%);
   box-shadow: $box-shadow-1;
   cursor: pointer;
