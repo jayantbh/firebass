@@ -39,8 +39,13 @@ export default Component.extend({
         song = await this.get('addSong').perform(track).catch(() => {});
       } else { song = track; }
 
-      this.get(`${list}.entities`).addObject(song);
-      this.get(list).save();
+      if (list instanceof EmberObject) {
+        list.get('entities').addObject(song);
+        list.save();
+      } else {
+        this.get(`${list}.entities`).addObject(song);
+        this.get(list).save();
+      }
     },
 
     removeSong(song, source) {
