@@ -5,7 +5,7 @@
   color: #FFF;
   margin-bottom: 9px;
   margin-left: 9px;
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .song-item {
@@ -16,7 +16,7 @@
   padding: 9px;
   cursor: pointer;
   transition: color $transition-1;
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'IBM Plex Sans', sans-serif;
 
   &:hover {
     color: #FFF;
@@ -29,12 +29,8 @@
 
   svg {
     flex-shrink: 0;
-    height: 10px;
-    width: 10px;
-
-    path {
-      fill: #FFF;
-    }
+    height: 14px;
+    width: 14px;
   }
 }
 
@@ -71,6 +67,7 @@
   font-size: 18px;
 }
 
-.add-to-queue svg {
-  transform: rotate(45deg);
+.sidebar-item {
+  padding: 0 9px;
+  font-size: 14px;
 }

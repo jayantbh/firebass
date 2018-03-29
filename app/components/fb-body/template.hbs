@@ -1,9 +1,18 @@
 <div local-class="body-component">
   <div local-class="main">
     <div local-class="sidebar">
-      <div local-class="songs-list">
+      <div local-class="playlist-collection">
         {{fb-track-list songs=songs queue=queue video=video updateVideo=(action (mut video)) removeSong=(action "removeSong") addToList=(action "addToList")}}
+        {{#each playlists as |playlist|}}
+          <hr>
+          {{fb-track-list songs=playlist queue=queue video=video updateVideo=(action (mut video)) removeSong=(action "removeSong") addToList=(action "addToList")}}
+        {{else}}
+          <hr>
+          <span local-class="collections-subtitle">No other playlists found</span>
+        {{/each}}
+        <hr>
       </div>
+      {{fb-add-playlist-form}}
     </div>
     <div local-class="content">
       <div local-class="add-new">
