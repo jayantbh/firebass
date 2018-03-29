@@ -46,7 +46,8 @@ export default Route.extend({
   model() {
     return RSVP.hash({
       songs: this.getOrCreatePlaylist('my-songs'),
-      queue: this.getOrCreatePlaylist('queue')
+      queue: this.getOrCreatePlaylist('queue'),
+      playlists: this.store.query('playlist', { orderBy: 'type', equalTo: 'generic' })
     });
   }
 });
