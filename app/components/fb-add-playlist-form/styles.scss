@@ -1,0 +1,77 @@
+@import '../styles/variables';
+
+.add-playlist-dropdown {
+  flex-shrink: 0;
+  padding: 9px 9px 18px;
+  box-shadow: $box-shadow-2;
+
+  &:global(.ember-basic-dropdown-trigger){
+    display: flex;
+  }
+}
+
+.expand-add-playlist-form {
+  svg {
+    margin-left: 3px;
+    height: 24px;
+    width: 24px;
+    margin-top: 4px;
+    transition: transform $transition-1;
+  }
+  &.is-active svg {
+    transform: rotate(180deg);
+  }
+}
+
+.add-playlist-form {
+  display: flex;
+  flex-direction: column;
+  color: #FFF;
+  font-family: inherit;
+
+  input {
+    font-family: inherit;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid $faded-black-3;
+    color: inherit;
+    margin-bottom: 6px;
+    padding: 6px 9px;
+    font-size: 14px;
+  }
+
+  button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color $transition-1;
+
+    &:hover {
+      background-color: $faded-black-2;
+    }
+  }
+
+  svg {
+    height: 14px;
+    width: 14px;
+  }
+}
+
+.add-playlist-button {
+  display: flex;
+  align-items: center;
+}
+
+.collections-subtitle {
+  font-size: 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  width: 100%;
+  text-align: center;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+}
