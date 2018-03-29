@@ -5,6 +5,10 @@ import { task } from 'ember-concurrency';
 export default Component.extend({
   tagName: '',
   newPlaylistName: '',
+  compactForm: false,
+  horizontalPosition: 'center',
+  verticalPosition: 'below',
+  onCreatePlaylist: () => {},
 
   store: service(),
 
@@ -16,6 +20,8 @@ export default Component.extend({
       access: 'private'
     });
     yield playlist.save();
+
+    this.sendAction('onCreatePlaylist', playlist);
 
     if (dropdown) { dropdown.actions.close(); }
     this.set('newPlaylistName', '');

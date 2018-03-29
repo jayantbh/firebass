@@ -15,7 +15,7 @@
       {{fb-add-playlist-form}}
     </div>
     <div local-class="content">
-      {{fb-search songs=songs queue=queue addToList=(action "addToList")}}
+      {{fb-search songs=songs queue=queue playlists=playlists addToList=(action "addToList")}}
       <div local-class="track-list">
         {{fb-track-list songs=queue mySongs=songs video=video updateVideo=(action (mut video)) addToList=(action "addToList") removeSong=(action "removeSong") isQueue=true}}
       </div>

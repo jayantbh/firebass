@@ -26,6 +26,7 @@
 }
 
 .result-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-basis: 0;
@@ -33,7 +34,6 @@
   padding: 9px;
   border-radius: 3px;
   box-shadow: $box-shadow-1;
-  cursor: pointer;
   line-height: 18px;
   transition: background $transition-1, box-shadow $transition-1;
 
@@ -73,4 +73,40 @@
 .info-text {
   color: #FFF;
   font-size: 18px;
+}
+
+.playlists {
+  margin-top: 9px;
+}
+
+.playlist-item {
+  padding: 3px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    height: 14px;
+    width: 14px;
+  }
+}
+
+.playlist-list-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+  background: $shade-1;
+  border: 1px solid lighten($shade-1, 2%);
+  border-radius: 50%;
+  box-shadow: $box-shadow-3;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  svg {
+    height: 18px;
+    width: 18px;
+  }
 }

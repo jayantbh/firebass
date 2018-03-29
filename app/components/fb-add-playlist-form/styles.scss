@@ -5,6 +5,11 @@
   padding: 9px 9px 18px;
   box-shadow: $box-shadow-2;
 
+  &.compact-form {
+    padding: 0;
+    box-shadow: none;
+  }
+
   &:global(.ember-basic-dropdown-trigger){
     display: flex;
   }
