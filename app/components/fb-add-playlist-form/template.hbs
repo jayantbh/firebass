@@ -4,8 +4,8 @@
       <span local-class="collections-subtitle">Add playlist <span local-class="expand-add-playlist-form {{if dropdown.isOpen "is-active"}}">{{inline-svg "icons/down"}}</span></span>
     {{/dropdown.trigger}}
     {{#dropdown.content}}
-      <form local-class="add-playlist-form" {{action (perform addNewPlaylist) on="submit"}}>
-        {{input placeholder="Playlist name" value=newPlaylistName input=(action (mut newPlaylistName) value="target.value") disabled=addNewPlaylist.isRunning}}
+      <form local-class="add-playlist-form" {{action (perform addNewPlaylist dropdown) on="submit"}}>
+        {{input placeholder="Playlist name" value=newPlaylistName input=(action (mut newPlaylistName) value="target.value") disabled=addNewPlaylist.isRunning autofocus=true}}
         <button local-class="add-playlist-button" type="submit" disabled={{addNewPlaylist.isRunning}}>Add {{inline-svg "icons/add"}}</button>
       </form>
     {{/dropdown.content}}

@@ -8,13 +8,17 @@ export default Component.extend({
 
   store: service(),
 
-  addNewPlaylist: task(function * () {
+  addNewPlaylist: task(function * (dropdown) {
     let playlist = yield this.get('store').createRecord('playlist', {
       name: this.get('newPlaylistName'),
       createdAt: new Date().getTime(),
       type: 'generic',
       access: 'private'
     });
-    return yield playlist.save();
+    yield playlist.save();
+
+    if (dropdown) { dropdown.actions.close(); }
+    this.set('newPlaylistName', '');
+    return playlist;
   }).drop()
 });
