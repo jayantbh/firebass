@@ -127,3 +127,7 @@ input {
     color: $faded-white;
   }
 }
+
+[data-ember-action] {
+  cursor: pointer;
+}
