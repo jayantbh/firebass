@@ -11,7 +11,7 @@ export default Component.extend({
 
   searchTerm: '',
   searchResults: null,
-  songs: null,
+  playlist: null,
   queue: null,
   handleSearchInput: () => {},
   addToList: () => {},

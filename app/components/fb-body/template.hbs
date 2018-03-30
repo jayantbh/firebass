@@ -2,10 +2,26 @@
   <div local-class="main">
     <div local-class="sidebar">
       <div local-class="playlist-collection">
-        {{fb-track-list songs=songs queue=queue video=video isExpanded=true updateVideo=(action (mut video)) removeSong=(action "removeSong") addToList=(action "addToList")}}
-        {{#each playlists as |playlist|}}
+        {{fb-track-list
+          isExpanded=true
+          isQueueUpdating=updateQueue.isRunning
+          playlist=playlist
+          queue=__queue
+          track=track
+          onPlaylistItemSelected=(action "onPlaylistItemSelected")
+          removeSong=(action "removeSong")
+          addToList=(action "addToList")
+        }}
+        {{#each playlists as |list|}}
           <hr>
-          {{fb-track-list songs=playlist queue=queue video=video updateVideo=(action (mut video)) removeSong=(action "removeSong") addToList=(action "addToList")}}
+          {{fb-track-list
+            playlist=list
+            queue=__queue
+            track=track
+            onPlaylistItemSelected=(action "onPlaylistItemSelected")
+            removeSong=(action "removeSong")
+            addToList=(action "addToList")
+          }}
         {{else}}
           <hr>
           <span local-class="collections-subtitle">No other playlists found</span>
@@ -15,13 +31,29 @@
       {{fb-add-playlist-form}}
     </div>
     <div local-class="content">
-      {{fb-search songs=songs queue=queue playlists=playlists addToList=(action "addToList")}}
+      {{fb-search playlist=playlist queue=queue playlists=playlists addToList=(action "addToList")}}
       <div local-class="track-list">
-        {{fb-track-list collapsible=false isExpanded=true songs=queue mySongs=songs video=video updateVideo=(action (mut video)) addToList=(action "addToList") removeSong=(action "removeSong") isQueue=true}}
+        {{#if updateQueue.isRunning}}
+          <div local-class="loader-container">
+            {{inline-svg "loader"}}
+          </div>
+        {{else}}
+          {{fb-track-list
+            collapsible=false
+            isExpanded=true
+            isQueue=true
+            playlist=__queue
+            mySongs=playlist
+            track=track
+            onPlaylistItemSelected=(action "onPlaylistItemSelected")
+            addToList=(action "addToList")
+            removeSong=(action "removeSong")
+          }}
+        {{/if}}
       </div>
     </div>
   </div>
   <div local-class="footer">
-    {{fb-player video=video onVideoEnded=(action "onVideoEnded")}}
+    {{fb-player video=track onVideoEnded=(action "onVideoEnded")}}
   </div>
 </div>

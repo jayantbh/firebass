@@ -46,9 +46,20 @@
 
 .track-list {
   flex-grow: 1;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
   background-color: $shade-4;
   padding: 27px 18px;
   overflow-y: auto;
+}
+
+.loader-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {

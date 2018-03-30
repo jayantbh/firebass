@@ -9,8 +9,8 @@
       {{#unless (array-contains queue.entities result.id.videoId property="videoId")}}
         <div local-class="result-actions add-to-queue" {{action addToList result "queue" bubbles=false}}>🚃 Add to queue</div>
       {{/unless}}
-      {{#unless (array-contains songs.entities result.id.videoId property="videoId")}}
-        <div local-class="result-actions add-to-songs" {{action addToList result "songs" bubbles=false}}>🎧 Add to songs</div>
+      {{#unless (array-contains playlist.entities result.id.videoId property="videoId")}}
+        <div local-class="result-actions add-to-songs" {{action addToList result "playlist" bubbles=false}}>🎧 Add to songs</div>
       {{/unless}}
       <div local-class="playlist-selector">
         {{#basic-dropdown horizontalPosition="left" as |dropdown|}}

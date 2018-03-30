@@ -1,5 +1,10 @@
 <div local-class="application">
   {{fb-header}}
-  {{fb-body songs=model.songs queue=model.queue playlists=model.playlists}}
+  {{fb-body
+    playlist=model.playlist
+    track=model.queue.currentSong
+    queue=model.queue
+    playlists=model.playlists
+  }}
   {{outlet}}
 </div>

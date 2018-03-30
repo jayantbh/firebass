@@ -1,27 +1,27 @@
-<div local-class="title-container">{{songs.name}}
+<div local-class="title-container">{{if isQueue "Queue" playlist.name}}
   {{#if collapsible}}
-    <span local-class="expand-playlist-toggle" {{action (mut isExpanded) (not isExpanded) bubbles=false}}>{{inline-svg (if isExpanded "icons/minus" "icons/add")}}</span>
+    <span local-class="expand-playlist-toggle" {{action (mut _isExpanded) (not __isExpanded) bubbles=false}}>{{inline-svg (if __isExpanded "icons/minus" "icons/add")}}</span>
   {{/if}}
 </div>
 <ul>
-  {{#each (sort-by "addedAt:desc" songs.entities) as |song|}}
-    {{#liquid-if isExpanded}}
+  {{#each (sort-by "addedAt:desc" playlist.entities) as |playlistItem|}}
+    {{#liquid-if __isExpanded}}
       {{fb-track-list/track
         isQueue=isQueue
-        song=song
-        video=video
+        song=playlistItem
+        track=track
         queue=queue
-        songs=songs
+        playlist=playlist
         mySongs=mySongs
-        updateVideo=(action updateVideo)
         addToList=(action addToList)
         removeSong=(action removeSong)
+        onTrackSelected=(action onPlaylistItemSelected)
       }}
     {{/liquid-if}}
   {{else}}
     {{#if isQueue}}
       <li local-class="info-text">Add some songs to your queue to get started</li>
-    {{else if (eq songs.type "my-songs")}}
+    {{else if (eq playlist.type "my-songs")}}
       <li local-class="info-text sidebar-item">Add some songs to your library to get started</li>
     {{else}}
       <li local-class="info-text sidebar-item">This playlist is empty</li>
