@@ -40,7 +40,7 @@ export default Component.extend({
     this.set('_queue', playlist);
 
     queue.set('entities', tracks);
-    queue.set('currentSong', track);
+    queue.set('currentTrack', track);
     yield queue.save();
 
     this.set('_queue', null);
@@ -73,7 +73,7 @@ export default Component.extend({
       let nextTrackInCurrentPlaylist = this.get('nextTrackInCurrentPlaylist');
       this.set('track', nextTrackInCurrentPlaylist);
       let queue = this.get('__queue');
-      queue.set('currentSong', nextTrackInCurrentPlaylist);
+      queue.set('currentTrack', nextTrackInCurrentPlaylist);
       queue.save();
     },
 

@@ -6,5 +6,5 @@ export default DS.Model.extend({
   createdAt: DS.attr('string'),
   type: DS.attr('string'),  // queue | TODO: standard
   access: DS.attr('string'), // private | TODO: public | collaborative
-  currentSong: DS.belongsTo('playable-entity', { inverse: 'playlists' })
+  currentTrack: DS.belongsTo('playable-entity', { inverse: 'playlists' })
 });
