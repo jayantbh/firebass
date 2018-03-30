@@ -7,6 +7,6 @@ export function ytObjectToPlayableEntityModel(video) {
     publishedAt: video.snippet.publishedAt,
     description: video.snippet.description,
     channelTitle: video.snippet.channelTitle,
-    addedAt: new Date().getTime()
+    addedAt: new Date()
   };
 }
