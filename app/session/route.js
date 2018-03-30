@@ -9,7 +9,7 @@ export default Route.extend({
   createPlaylist(type) {
     return this.store.createRecord('playlist', {
       name: type.split('-').map(capitalize).join(' '),
-      createdAt: new Date().getTime(),
+      createdAt: new Date(),
       type, access: 'private'
     });
   },
