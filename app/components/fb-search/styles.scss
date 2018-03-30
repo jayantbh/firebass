@@ -91,6 +91,14 @@
   }
 }
 
+.playlist-selector {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .playlist-list-trigger {
   display: flex;
   align-items: center;
@@ -101,9 +109,6 @@
   border: 1px solid lighten($shade-1, 2%);
   border-radius: 50%;
   box-shadow: $box-shadow-3;
-  position: absolute;
-  top: 0;
-  left: 0;
 
   svg {
     height: 18px;

@@ -12,27 +12,29 @@
       {{#unless (array-contains songs.entities result.id.videoId property="videoId")}}
         <div local-class="result-actions add-to-songs" {{action addToList result "songs" bubbles=false}}>🎧 Add to songs</div>
       {{/unless}}
-      {{#basic-dropdown horizontalPosition="center" as |dropdown|}}
-        {{#dropdown.trigger}}
-          <span local-class="playlist-list-trigger {{if dropdown.isOpen "is-active"}}">{{inline-svg "icons/add"}}</span>
-        {{/dropdown.trigger}}
-        {{#dropdown.content}}
-          {{#if playlists.length}}
-            <span local-class="info-text">Add to playlist:</span>
-          {{/if}}
-          <ul local-class="playlists">
-            {{#each playlists as |playlist|}}
-              <li local-class="playlist-item" {{action addToList result playlist bubbles=false}}>
-                {{playlist.name}}
-                {{#if (array-contains playlist.entities result.id.videoId property="videoId")}}
-                  {{inline-svg "icons/check"}}
-                {{/if}}
-              </li>
-            {{/each}}
-          </ul>
-          {{fb-add-playlist-form horizontalPosition="left" compactForm=true onCreatePlaylist=(action addToList result bubbles=false)}}
-        {{/dropdown.content}}
-      {{/basic-dropdown}}
+      <div local-class="playlist-selector">
+        {{#basic-dropdown horizontalPosition="left" as |dropdown|}}
+          {{#dropdown.trigger}}
+            <span local-class="playlist-list-trigger {{if dropdown.isOpen "is-active"}}">{{inline-svg "icons/add"}}</span>
+          {{/dropdown.trigger}}
+          {{#dropdown.content}}
+            {{#if playlists.length}}
+              <span local-class="info-text">Add to playlist:</span>
+            {{/if}}
+            <ul local-class="playlists">
+              {{#each playlists as |playlist|}}
+                <li local-class="playlist-item" {{action addToList result playlist bubbles=false}}>
+                  {{playlist.name}}
+                  {{#if (array-contains playlist.entities result.id.videoId property="videoId")}}
+                    {{inline-svg "icons/check"}}
+                  {{/if}}
+                </li>
+              {{/each}}
+            </ul>
+            {{fb-add-playlist-form horizontalPosition="left" compactForm=true onCreatePlaylist=(action addToList result bubbles=false)}}
+          {{/dropdown.content}}
+        {{/basic-dropdown}}
+      </div>
     </div>
   {{else if (and searchYoutube.lastSuccessful.value (not searchYoutube.isRunning) searchTerm.length)}}
     <span local-class="info-text">No results found for "{{searchTerm}}"</span>
