@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: space-between;
   color: lighten($shade-2, 50%);
-  padding: 9px;
   cursor: pointer;
   transition: color $transition-1;
   font-family: 'IBM Plex Sans', sans-serif;
@@ -26,6 +25,20 @@
   }
 }
 
+.song-item-content {
+  padding: 9px 0 9px 9px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+.song-item-action-buttons {
+  display: flex;
+  padding: 9px 9px 9px 0;
+  flex-shrink: 0;
+}
+
 .song-item-actions {
   margin-left: 9px;
   border-radius: 50%;
@@ -36,6 +49,19 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+
+  svg {
+    transition: transform $transition-1;
+  }
+
+  &.is-active svg {
+    transform: rotate(180deg);
+  }
+}
+
+.more-actions svg {
+  height: 18px;
+  width: 18px;
 }
 
 .song-item-title {

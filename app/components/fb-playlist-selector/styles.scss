@@ -1,0 +1,28 @@
+.is-absolute {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.info-text {
+  color: #FFF;
+  font-size: 18px;
+}
+
+.playlists {
+  margin-top: 9px;
+}
+
+.playlist-item {
+  padding: 3px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    height: 14px;
+    width: 14px;
+  }
+}

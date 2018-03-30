@@ -9,6 +9,7 @@ export default Component.extend({
   track: null,
   queue: null,
   playlist: null,
+  playlists: null,
   mySongs: null,
   addToList: () => {},
   removeSong: () => {},

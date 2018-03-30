@@ -1,8 +1,22 @@
-<li local-class="song-item {{if isQueue "queue-item"}} {{if (and track.videoId (eq song.videoId track.videoId)) "is-playing"}}" {{action onTrackSelected song playlist}}>
-  <span local-class="song-item-title">{{song.title}}</span>
+<li local-class="song-item {{if isQueue "queue-item"}} {{if (and track.videoId (eq song.videoId track.videoId)) "is-playing"}}">
+  <div local-class="song-item-content" {{action onTrackSelected song playlist}}>
+    <span local-class="song-item-title">{{song.title}}</span>
+  </div>
+  <div local-class="song-item-action-buttons">
+    {{#if canAddToQueue}}
+      <div local-class="song-item-actions add-to-queue" title="{{if isQueue "Add to My Songs" "Add to Queue"}}" {{action addToList song (if isQueue "songs" "queue") bubbles=false}}>{{inline-svg "icons/add"}}</div>
+    {{/if}}
 
-  {{#if canAddToQueue}}
-    <div local-class="song-item-actions add-to-queue" title="{{if isQueue "Add to My Songs" "Add to Queue"}}" {{action addToList song (if isQueue "songs" "queue") bubbles=false}}>{{inline-svg "icons/add"}}</div>
-  {{/if}}
-  <div local-class="song-item-actions delete-song" title="Remove from list" {{action removeSong song playlist bubbles=false}}>{{inline-svg "icons/cross"}}</div>
+    <div local-class="song-item-actions delete-song" title="Remove from list" {{action removeSong song playlist bubbles=false}}>{{inline-svg "icons/cross"}}</div>
+
+    {{#fb-playlist-selector
+      horizontalPosition="right"
+      playlist=playlist
+      playlists=playlists
+      track=track
+      addToList=(action addToList)
+    as |trigger dropdown|}}
+      {{#if trigger.header}}<span local-class="song-item-actions more-actions {{if dropdown.isOpen "is-active"}}" title="More actions">{{inline-svg "icons/down"}}</span>{{/if}}
+    {{/fb-playlist-selector}}
+  </div>
 </li>

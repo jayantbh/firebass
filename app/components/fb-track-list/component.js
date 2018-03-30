@@ -18,6 +18,7 @@ export default Component.extend({
   }),
 
   playlist: null,
+  playlists: null,
   mySongs: null,
   track: null,
   queue: null,

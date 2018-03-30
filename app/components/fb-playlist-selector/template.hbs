@@ -1,0 +1,25 @@
+<div local-class="playlist-selector {{if isAbsolute "is-absolute"}}">
+  {{#basic-dropdown horizontalPosition=horizontalPosition verticalPosition=verticalPosition as |dropdown|}}
+    {{#dropdown.trigger}}
+      {{yield (hash header=true) dropdown}}
+    {{/dropdown.trigger}}
+    {{#dropdown.content}}
+      {{#with (reject-by "id" playlist.id playlists) as |lists|}}
+        {{#if lists.length}}
+          <span local-class="info-text">Add to playlist:</span>
+        {{/if}}
+        <ul local-class="playlists">
+          {{#each lists as |playlist|}}
+            <li local-class="playlist-item" {{action addToList track playlist bubbles=false}}>
+              {{playlist.name}}
+              {{#if (array-contains playlist.entities (or track.videoId track.id.videoId) property="videoId")}}
+                {{inline-svg "icons/check"}}
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      {{/with}}
+      {{fb-add-playlist-form horizontalPosition="left" compactForm=true onCreatePlaylist=(action addToList track bubbles=false)}}
+    {{/dropdown.content}}
+  {{/basic-dropdown}}
+</div>
