@@ -23,6 +23,7 @@
 .playlist-collection {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   overflow-y: auto;
   padding: 9px 0;
 }

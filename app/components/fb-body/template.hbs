@@ -2,7 +2,7 @@
   <div local-class="main">
     <div local-class="sidebar">
       <div local-class="playlist-collection">
-        {{fb-track-list songs=songs queue=queue video=video updateVideo=(action (mut video)) removeSong=(action "removeSong") addToList=(action "addToList")}}
+        {{fb-track-list songs=songs queue=queue video=video isExpanded=true updateVideo=(action (mut video)) removeSong=(action "removeSong") addToList=(action "addToList")}}
         {{#each playlists as |playlist|}}
           <hr>
           {{fb-track-list songs=playlist queue=queue video=video updateVideo=(action (mut video)) removeSong=(action "removeSong") addToList=(action "addToList")}}
@@ -17,7 +17,7 @@
     <div local-class="content">
       {{fb-search songs=songs queue=queue playlists=playlists addToList=(action "addToList")}}
       <div local-class="track-list">
-        {{fb-track-list songs=queue mySongs=songs video=video updateVideo=(action (mut video)) addToList=(action "addToList") removeSong=(action "removeSong") isQueue=true}}
+        {{fb-track-list collapsible=false isExpanded=true songs=queue mySongs=songs video=video updateVideo=(action (mut video)) addToList=(action "addToList") removeSong=(action "removeSong") isQueue=true}}
       </div>
     </div>
   </div>

@@ -2,6 +2,9 @@ import Component from '@ember/component';
 
 export default Component.extend({
   tagName: '',
+  isExpanded: false,
+  collapsible: true,
+
   songs: null,
   mySongs: null,
   video: null,
