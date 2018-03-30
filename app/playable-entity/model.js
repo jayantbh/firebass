@@ -8,5 +8,6 @@ export default DS.Model.extend({
   publishedAt: DS.attr('date'),
   addedAt: DS.attr('date'),
   description: DS.attr('string'),
-  channelTitle: DS.attr('string')
+  channelTitle: DS.attr('string'),
+  playlists: DS.hasMany('playlist', { inverse: 'entities' })
 });

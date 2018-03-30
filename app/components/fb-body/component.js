@@ -54,18 +54,19 @@ export default Component.extend({
         song = await this.get('addSong').perform(track).catch(() => {});
       } else { song = track; }
 
-      if (playlist instanceof EmberObject) {
-        playlist.get('entities').addObject(song);
-        playlist.save();
-      } else {
-        this.get(`${playlist}.entities`).addObject(song);
-        this.get(playlist).save();
-      }
+      if (!(playlist instanceof EmberObject)) { playlist = this.get(playlist); }
+
+      playlist.get('entities').addObject(song);
+      await playlist.save();
+      song.get('playlists').addObject(playlist);
+      song.save();
     },
 
-    removeSong(track, playlist) {
+    removeSong: async function (track, playlist) {
       playlist.get('entities').removeObject(track);
-      playlist.save();
+      await playlist.save();
+      track.get('playlists').removeObject(playlist);
+      track.save();
     },
 
     onVideoEnded() {
