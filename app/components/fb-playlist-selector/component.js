@@ -14,7 +14,7 @@ export default Component.extend({
 
   filteredPlaylists: computed('playlists', 'playlist', function () {
     if (this.get('filterOutSelectedPlaylists') && this.get('playlist')) {
-      this.get('playlists').rejectBy('id', this.get('playlist.id'));
+      return this.get('playlists').rejectBy('id', this.get('playlist.id'));
     }
     return this.get('playlists');
   })

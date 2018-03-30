@@ -9,10 +9,10 @@
           <span local-class="info-text">Add to playlist:</span>
         {{/if}}
         <ul local-class="playlists">
-          {{#each lists as |playlist|}}
-            <li local-class="playlist-item" {{action addToList track playlist bubbles=false}}>
-              {{playlist.name}}
-              {{#if (array-contains playlist.entities (or track.videoId track.id.videoId) property="videoId")}}
+          {{#each lists as |list|}}
+            <li local-class="playlist-item" {{action addToList track list bubbles=false}}>
+              {{list.name}}
+              {{#if (array-contains list.entities (or track.videoId track.id.videoId) property="videoId")}}
                 {{inline-svg "icons/check"}}
               {{/if}}
             </li>

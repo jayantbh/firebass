@@ -52,7 +52,7 @@ export default Component.extend({
       let song;
       if (!(track instanceof EmberObject)) {
         song = await this.get('addSong').perform(track).catch(() => {});
-      } else { song = track; }
+      } else { song = track.content || track; }
 
       if (!(playlist instanceof EmberObject)) { playlist = this.get(playlist); }
 
