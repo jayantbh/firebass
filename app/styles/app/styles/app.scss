@@ -71,7 +71,7 @@ hr {
   background-color: lighten($shade-2, 5%);
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 14px;
-  color: darken($shade-1, 5%);
+  color: lighten($shade-4, 45%);
   border: 1px solid $shade-3;
   box-shadow: $box-shadow-3;
 }
