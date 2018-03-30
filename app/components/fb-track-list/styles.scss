@@ -8,60 +8,6 @@
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.song-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: lighten($shade-2, 50%);
-  padding: 9px;
-  cursor: pointer;
-  transition: color $transition-1;
-  font-family: 'IBM Plex Sans', sans-serif;
-
-  &:hover {
-    color: #FFF;
-  }
-
-  &.is-playing {
-    border-radius: 3px;
-    background: $faded-black-1;
-  }
-
-  svg {
-    flex-shrink: 0;
-    height: 14px;
-    width: 14px;
-  }
-}
-
-.song-item-actions {
-  margin-left: 9px;
-  border-radius: 50%;
-  background: $faded-black-1;
-  height: 20px;
-  width: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.song-item-title {
-  flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: pre;
-  padding: 2px 0;
-}
-
-.queue-item {
-  color: darken($shade-4, 25%);
-
-  &:hover {
-    color: lighten($shade-4, 55%)
-  }
-}
-
 .info-text {
   color: #FFF;
   font-size: 18px;

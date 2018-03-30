@@ -1,0 +1,7 @@
+<li local-class="song-item {{if isQueue "queue-item"}} {{if (and video.videoId (eq song.videoId video.videoId)) "is-playing"}}" {{action updateVideo song}}>
+  <span local-class="song-item-title">{{song.title}}</span>
+  {{#if (or (and (not isQueue) (not (array-contains queue.entities song.videoId property="videoId"))) (and isQueue (not (array-contains mySongs.entities song.videoId property="videoId"))))}}
+    <div local-class="song-item-actions add-to-queue" title="{{if isQueue "Add to My Songs" "Add to Queue"}}" {{action addToList song (if isQueue "songs" "queue") bubbles=false}}>{{inline-svg "icons/add"}}</div>
+  {{/if}}
+  <div local-class="song-item-actions delete-song" title="Remove from list" {{action removeSong song songs bubbles=false}}>{{inline-svg "icons/cross"}}</div>
+</li>
