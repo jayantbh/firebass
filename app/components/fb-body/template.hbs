@@ -33,7 +33,12 @@
       {{fb-add-playlist-form}}
     </div>
     <div local-class="content">
-      {{fb-search playlist=playlist queue=queue playlists=playlists addToList=(action "addToList")}}
+      {{fb-search
+        playlist=playlist
+        queue=queue
+        playlists=playlists
+        addToList=(action "addToList")
+      }}
       <div local-class="track-list">
         {{#if updateQueue.isRunning}}
           <div local-class="loader-container">

@@ -4,7 +4,7 @@
       {{yield (hash header=true) dropdown}}
     {{/dropdown.trigger}}
     {{#dropdown.content}}
-      {{#with (reject-by "id" playlist.id playlists) as |lists|}}
+      {{#with filteredPlaylists as |lists|}}
         {{#if lists.length}}
           <span local-class="info-text">Add to playlist:</span>
         {{/if}}
