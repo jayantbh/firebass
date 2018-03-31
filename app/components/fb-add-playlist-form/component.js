@@ -21,7 +21,7 @@ export default Component.extend({
     });
     yield playlist.save();
 
-    this.sendAction('onCreatePlaylist', playlist);
+    this.onCreatePlaylist(playlist);
 
     if (dropdown) { dropdown.actions.close(); }
     this.set('newPlaylistName', '');
