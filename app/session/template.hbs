@@ -1,10 +1,11 @@
 <div local-class="application">
-  {{fb-header}}
+  {{fb-header isSidebarActive=isSidebarActive}}
   {{fb-body
     playlist=model.playlist
     track=model.queue.currentTrack
     queue=model.queue
     playlists=model.playlists
+    isSidebarActive=isSidebarActive
   }}
   {{outlet}}
 </div>

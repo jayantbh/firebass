@@ -1,5 +1,12 @@
 <div local-class="header-component">
-  <h1 local-class="title">Firebass</h1>
+  <div local-class="brand" {{action (mut isSidebarActive) (not isSidebarActive)}}>
+    {{#liquid-if isSidebarActive class="sidebar-toggle"}}
+      {{inline-svg "icons/prev"}}
+    {{else}}
+      {{inline-svg "icons/musiclist"}}
+    {{/liquid-if}}
+    <h1 local-class="title">Firebass</h1>
+  </div>
   {{#if session.isAuthenticated}}
     <button {{action "signOut"}}>Sign out</button>
   {{/if}}

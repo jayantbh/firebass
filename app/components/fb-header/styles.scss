@@ -10,6 +10,17 @@
   color: white;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+
+  svg {
+    height: 28px;
+    width: 28px;
+    margin: 2px 6px 0 0;
+  }
+}
+
 .title {
   font-size: 24px;
   font-family: 'IBM Plex Sans', sans-serif;

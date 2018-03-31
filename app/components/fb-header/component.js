@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   tagName: '',
+  isSidebarActive: false,
 
   session: service(),
   router: service(),

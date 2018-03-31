@@ -18,6 +18,7 @@
   overflow-y: hidden;
   padding: 9px 18px;
   flex-shrink: 0;
+  background-color: $shade-3;
   transition: max-height $transition-1;
 
   &.no-search-term {
@@ -64,6 +65,7 @@
 .result-actions {
   padding: 0 3px;
   transition: color $transition-1;
+  color: $text-d1;
 
   &:hover {
     color: #FFF;
