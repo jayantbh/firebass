@@ -4,7 +4,7 @@ A simple web-player for playing songs on youtube as if it was an actual music pl
 
 This is in **super early development** at the moment.
 
-![screenshot](https://snag.gy/HmYw6C.jpg)
+![screenshot](https://i.snag.gy/yRQ9YH.jpg)
 
 ## Prerequisites
 
