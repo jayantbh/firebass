@@ -1,7 +1,7 @@
 <div local-class="add-playlist-dropdown {{if compactForm "compact-form"}}">
   {{#basic-dropdown renderInPlace=true horizontalPosition=horizontalPosition verticalPosition=verticalPosition as |dropdown|}}
     {{#dropdown.trigger}}
-      <span local-class="collections-subtitle">Add playlist <span local-class="expand-add-playlist-form {{if dropdown.isOpen "is-active"}}">{{inline-svg "icons/down"}}</span></span>
+      <span local-class="collections-subtitle"><span local-class="playlist-icon">{{inline-svg "icons/playlist"}}</span> Add playlist <span local-class="expand-add-playlist-form {{if dropdown.isOpen "is-active"}}">{{inline-svg "icons/down"}}</span></span>
     {{/dropdown.trigger}}
     {{#dropdown.content}}
       <form local-class="add-playlist-form" {{action (perform addNewPlaylist dropdown) on="submit"}}>
