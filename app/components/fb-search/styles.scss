@@ -2,7 +2,7 @@
 
 .search-bar {
   width: 100%;
-  background: #008f81;
+  background: $shade-3-d2;
   border: none;
   padding: 9px 48px 9px 18px;
   font-size: 18px;
@@ -82,7 +82,7 @@
   height: 24px;
   width: 24px;
   background: $shade-1;
-  border: 1px solid lighten($shade-1, 2%);
+  border: 1px solid $shade-1-l1;
   border-radius: 50%;
   box-shadow: $box-shadow-3;
 
