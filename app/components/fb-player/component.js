@@ -30,6 +30,7 @@ export default Component.extend({
   author: null,
   title: null,
   playerState: -1,
+  onVideoEnded: () => {},
 
   // CPs
   isVideoUnstarted: computed('playerState', function() { return this.get('playerState') === YTStatus.UNSTARTED }),
@@ -139,10 +140,6 @@ export default Component.extend({
     if (newPlayerState === YTStatus.ENDED) {
       this.onVideoEnded();
     }
-  },
-
-  onVideoEnded() {
-
   },
 
   actions: {
