@@ -3,8 +3,8 @@
     <span local-class="song-item-title">{{song.title}}</span>
   </div>
   <div local-class="song-item-action-buttons">
-    {{#if canAddToQueue}}
-      <div local-class="song-item-actions add-to-queue" title="{{if isQueue "Add to My Songs" "Add to Queue"}}" {{action addToList song (if isQueue "songs" "queue") bubbles=false}}>{{inline-svg "icons/add"}}</div>
+    {{#if canAddToMySongsOrQueue}}
+      <div local-class="song-item-actions add-to-queue" title="{{if isQueue "Add to My Songs" "Add to Queue"}}" {{action addToList song (if isQueue "mySongs" "queue") bubbles=false}}>{{inline-svg "icons/add"}}</div>
     {{/if}}
 
     <div local-class="song-item-actions delete-song" title="Remove from list" {{action removeSong song playlist bubbles=false}}>{{inline-svg "icons/cross"}}</div>

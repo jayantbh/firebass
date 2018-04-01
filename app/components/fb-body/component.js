@@ -12,7 +12,7 @@ export default Component.extend({
   searchTerm: '',
   track: null,
   searchResults: null,
-  playlist: null,
+  mySongs: null,
   playlists: () => [],
 
   store: service(),

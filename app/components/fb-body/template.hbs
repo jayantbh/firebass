@@ -5,7 +5,7 @@
         {{fb-track-list
           isExpanded=true
           isQueueUpdating=updateQueue.isRunning
-          playlist=playlist
+          playlist=mySongs
           playlists=playlists
           queue=__queue
           track=track
@@ -34,7 +34,7 @@
     </div>
     <div local-class="content">
       {{fb-search
-        playlist=playlist
+        mySongs=mySongs
         queue=__queue
         playlists=playlists
         addToList=(action "addToList")
@@ -51,7 +51,7 @@
             isQueue=true
             playlist=__queue
             playlists=playlists
-            mySongs=playlist
+            mySongs=mySongs
             track=track
             onPlaylistItemSelected=(action "onPlaylistItemSelected")
             addToList=(action "addToList")

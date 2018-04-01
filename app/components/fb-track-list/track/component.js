@@ -15,7 +15,7 @@ export default Component.extend({
   removeSong: () => {},
   onTrackSelected: () => {},
 
-  canAddToQueue: computed('isQueue', 'song', 'mySongs', 'queue.entities.@each.videoId', 'playlist', function () {
+  canAddToMySongsOrQueue: computed('isQueue', 'song', 'mySongs.entities.@each.videoId', 'queue.entities.@each.videoId', 'playlist.entities.@each.videoId', function () {
     let { isQueue, song, mySongs, queue, playlist } = this.getProperties('isQueue', 'song', 'mySongs', 'queue', 'playlist');
     let songIsInQueueButNotInMySongs, songIsNotInQueueAndThisPlaylistIsNotTheQueue;
 
