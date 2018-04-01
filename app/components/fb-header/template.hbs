@@ -8,6 +8,6 @@
     <h1 local-class="title">Firebass</h1>
   </div>
   {{#if session.isAuthenticated}}
-    <button {{action "signOut"}}>Sign out</button>
+    <button local-class="session-action" {{action "signOut"}}>Sign out</button>
   {{/if}}
 </div>
