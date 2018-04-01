@@ -1,8 +1,8 @@
 @import '../styles/variables';
 
 .info-box {
-  height: 180px;
-  width: 180px;
+  height: 120px;
+  width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,6 +10,13 @@
   color: #ffffff;
   position: relative;
   overflow: hidden;
+}
+
+@media #{$screen-breakpoint-1} {
+  .info-box {
+    height: 180px;
+    width: 180px;
+  }
 }
 
 .art, .overlay {

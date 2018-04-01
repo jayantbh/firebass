@@ -1,3 +1,5 @@
+@import '../styles/variables';
+
 .player-wrapper {
   display: flex;
   align-items: center;
@@ -12,5 +14,11 @@
   flex-direction: column;
   align-items: flex-start;
   flex-grow: 1;
-  padding: 18px;
+  padding: 0 18px;
+}
+
+@media #{$screen-breakpoint-1} {
+  .video-controls {
+    padding: 18px;
+  }
 }
