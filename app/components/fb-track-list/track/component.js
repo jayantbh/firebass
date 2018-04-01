@@ -15,11 +15,12 @@ export default Component.extend({
   removeSong: () => {},
   onTrackSelected: () => {},
 
-  canAddToQueue: computed('isQueue', 'song', 'mySongs', 'queue.entities.@each.videoId', function () {
-    let { isQueue, song, mySongs, queue } = this.getProperties('isQueue', 'song', 'mySongs', 'queue');
+  canAddToQueue: computed('isQueue', 'song', 'mySongs', 'queue.entities.@each.videoId', 'playlist', function () {
+    let { isQueue, song, mySongs, queue, playlist } = this.getProperties('isQueue', 'song', 'mySongs', 'queue', 'playlist');
     let songIsInQueueButNotInMySongs, songIsNotInQueueAndThisPlaylistIsNotTheQueue;
 
     let thisPlaylistIsTheQueueAndHasAccessToMySongsOrOtherwise = isQueue === Boolean(mySongs);
+    queue = isQueue ? playlist : queue;
 
     if (!(song && queue && thisPlaylistIsTheQueueAndHasAccessToMySongsOrOtherwise)) return false;
 

@@ -19,13 +19,22 @@ export default Route.extend({
 
     try {
       playlist = await this.store.query('playlist', { orderBy: 'type', equalTo: type });
-      if (playlist.get('length')) return playlist.get('firstObject');
+      if (playlist.get('length')) {
+        return await this.playlistWithAllTracksLoaded(playlist.get('firstObject'));
+      }
     } catch (e) { /* do nothing */ }
 
 
     playlist = this.createPlaylist(type);
     await playlist.save();
-    return playlist
+    return await this.playlistWithAllTracksLoaded(playlist);
+  },
+
+  playlistWithAllTracksLoaded: async function(playlist) {
+    // This just loads all records into ember-data, the established relationships do the rest.
+    // We're doing this instead of using `include`s because emberfire seemingly doesn't allow doing that.
+    await RSVP.all(playlist.get('entities').getEach('id').map(id => this.store.findRecord('playable-entity', id)));
+    return playlist;
   },
 
   beforeModel: function() {
