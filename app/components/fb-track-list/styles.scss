@@ -5,8 +5,7 @@
   align-items: center;
   font-size: 18px;
   color: #FFF;
-  margin-bottom: 9px;
-  margin-left: 9px;
+  margin: 9px;
   flex-shrink: 0;
   font-family: 'IBM Plex Sans', sans-serif;
 }
@@ -33,7 +32,7 @@
 }
 
 .playlist-track-count {
-  margin-left: 6px;
-  font-size: 14px;
+  margin-left: auto;
+  font-size: 12px;
   opacity: 0.75;
 }

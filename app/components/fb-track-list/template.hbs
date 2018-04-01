@@ -1,7 +1,9 @@
-<div local-class="title-container">{{if isQueue "Queue" playlist.name}}
-  {{#if (and collapsible playlist.entities.length)}}
-    <span local-class="expand-playlist-toggle" {{action (mut _isExpanded) (not __isExpanded) bubbles=false}}>{{inline-svg (if __isExpanded "icons/minus" "icons/add")}}</span>
+<div local-class="title-container" {{action (mut _isExpanded) (not __isExpanded) bubbles=false}}>{{if isQueue "Queue" playlist.name}}
+  {{#if playlist.entities.length}}
     <span local-class="playlist-track-count">{{pluralize playlist.entities.length "song"}}</span>
+  {{/if}}
+  {{#if collapsible}}
+    <span local-class="expand-playlist-toggle">{{inline-svg (if __isExpanded "icons/minus" "icons/add")}}</span>
   {{/if}}
 </div>
 <ul>
