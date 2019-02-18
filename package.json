@@ -40,7 +40,7 @@
     "ember-css-modules": "^0.7.10",
     "ember-css-modules-reporter": "^1.2.0",
     "ember-css-modules-sass": "^1.0.0",
-    "ember-data": "~3.0.0",
+    "ember-data": "~3.7.0",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^3.4.4",
     "ember-inflector": "^2.2.0",
