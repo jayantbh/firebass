@@ -43,7 +43,7 @@
     "ember-data": "~3.8.0",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^6.5.0",
-    "ember-inflector": "^2.2.0",
+    "ember-inflector": "^3.0.0",
     "ember-inline-svg": "^0.2.1",
     "ember-load-initializers": "^2.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
