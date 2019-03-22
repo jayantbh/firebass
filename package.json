@@ -57,7 +57,7 @@
     "ember-web-app": "^2.3.1",
     "ember-welcome-page": "^4.0.0",
     "emberfire": "^2.0.10",
-    "eslint-plugin-ember": "^6.2.0",
+    "eslint-plugin-ember": "^6.3.0",
     "liquid-fire": "^0.29.2",
     "loader.js": "^4.7.0",
     "torii": "^0.10.1"
