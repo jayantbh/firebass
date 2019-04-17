@@ -39,7 +39,7 @@
     "ember-concurrency": "^0.10.0",
     "ember-css-modules": "^1.2.0",
     "ember-css-modules-reporter": "^1.2.0",
-    "ember-css-modules-sass": "^1.0.0",
+    "ember-css-modules-sass": "^1.0.1",
     "ember-data": "~3.8.0",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^6.5.0",
