@@ -52,7 +52,7 @@
     "ember-service-worker-asset-cache": "^0.6.4",
     "ember-service-worker-cache-fallback": "^0.6.2",
     "ember-service-worker-index": "^0.7.0",
-    "ember-source": "~3.9.0",
+    "ember-source": "~3.9.1",
     "ember-truth-helpers": "^2.1.0",
     "ember-web-app": "^2.3.1",
     "ember-welcome-page": "^4.0.0",
